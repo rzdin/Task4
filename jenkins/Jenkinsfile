@@ -17,20 +17,18 @@ pipeline {
        
     }
     stages {
-        stage('Build') {
-              tools { 
+          tools { 
                      maven 'maven' 
                      jdk 'JAVA_HOME' 
-               }
+          }
+        stage('Build') {
+             
             steps {
                 sh 'mvn -B -DskipTests clean package'
             }
         }
         stage('Test') {
-              tools { 
-                     maven 'maven' 
-                     jdk 'JAVA_HOME' 
-               }
+              
             steps {
                 sh 'mvn test'
             }
@@ -41,10 +39,7 @@ pipeline {
             }
         }
         stage('Deliver') {
-              tools { 
-                     maven 'maven' 
-                     jdk 'JAVA_HOME' 
-               }
+              
             steps { 
                  sh'''#!/bin/bash 
                    
