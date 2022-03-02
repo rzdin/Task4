@@ -43,7 +43,7 @@ pipeline {
         stage('Deliver') {
             steps { 
                  sh'''#!/bin/bash 
-                   sudo chmod u+x deliver.sh
+                   chmod u+x deliver.sh
                  ./jenkins/scripts/deliver.sh
                  '''
                
