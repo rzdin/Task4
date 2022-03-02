@@ -41,6 +41,10 @@ pipeline {
             }
         }
         stage('Deliver') {
+              tools { 
+                     maven 'maven' 
+                     jdk 'JAVA_HOME' 
+               }
             steps { 
                  sh'''#!/bin/bash 
                    
