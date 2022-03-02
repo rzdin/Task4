@@ -16,11 +16,11 @@ pipeline {
        
        
     }
-    stages {
-          tools { 
+       tools { 
                      maven 'maven' 
                      jdk 'JAVA_HOME' 
-          }
+   }
+    stages {
         stage('Build') {
              
             steps {
