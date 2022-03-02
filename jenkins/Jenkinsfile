@@ -27,6 +27,10 @@ pipeline {
             }
         }
         stage('Test') {
+              tools { 
+                     maven 'maven' 
+                     jdk 'JAVA_HOME' 
+               }
             steps {
                 sh 'mvn test'
             }
