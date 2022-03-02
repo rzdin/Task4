@@ -49,7 +49,7 @@ pipeline {
                  sh'''#!/bin/bash 
                    
 
-                      ./jenkins/scripts/deliver.sh
+                     chmod -x ./jenkins/scripts/deliver.sh
                 
                  '''
                
