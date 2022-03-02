@@ -1,9 +1,20 @@
 pipeline {
-    agent {
-        docker {
-            image 'maven:3-alpine'
-            args '-v /root/.m2:/root/.m2'
-        }
+     agent any 
+        
+        
+        
+        environment {
+        bucket = "sam-jenkins-demo-us-west-2-rana-ziauddin"          //artifact deployment S3 bucket 
+        bucket1 = "sam-jenkins-demo-us-east-2-ranaziauddin"         //artifact upload s3 bucket 
+        region = "us-east-1"                     //artifact deployment bucket region 
+        region1 = "us-east-2"                    //artifact upload bucket region 
+        aws_credential = "AWSReservedSSO_AdministratorAccess_564bcbbbca5e5655/rzdin@enquizit.com" //aws credentials 
+        application_name = "Nodejs"    
+        
+           
+        
+       
+       
     }
     stages {
         stage('Build') {
