@@ -18,8 +18,12 @@ pipeline {
     }
     stages {
         stage('Build') {
+              tools { 
+                     maven 'maven' 
+                     jdk 'JAVA' 
+               }
             steps {
-                sh 'mvn install'
+                sh 'mvn -B -DskipTests clean package'
             }
         }
         stage('Test') {
