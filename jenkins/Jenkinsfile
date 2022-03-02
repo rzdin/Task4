@@ -20,7 +20,7 @@ pipeline {
         stage('Build') {
               tools { 
                      maven 'maven' 
-                     jdk 'JAVA' 
+                     jdk 'JAVA_HOME' 
                }
             steps {
                 sh 'mvn -B -DskipTests clean package'
