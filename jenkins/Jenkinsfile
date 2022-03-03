@@ -9,7 +9,8 @@ pipeline {
         region = "us-east-1"                     //artifact deployment bucket region 
         region1 = "us-east-2"                    //artifact upload bucket region 
         aws_credential = "AWSReservedSSO_AdministratorAccess_564bcbbbca5e5655/rzdin@enquizit.com" //aws credentials 
-        application_name = "Nodejs"    
+        application_name = "Nodejs" 
+        DOCKERHUB_CREDENTIALS = credentials('rzdin-dockerhub')
         
            
         
@@ -38,37 +39,11 @@ pipeline {
                 }
             }
         }
-        stage('Deliver') {
-              
-            steps { 
-                 sh'''#!/bin/bash 
-                 
-
-                               echo 'The following Maven command installs your Maven-built Java application'
-                               echo 'into the local Maven repository, which will ultimately be stored in'
-                               echo 'Jenkins''s local Maven repository (and the "maven-repository" Docker data'
-                               echo 'volume).'
-                               set -x
-                               mvn jar:jar install:install help:evaluate -Dexpression=project.name
-                               set +x
-                               echo 'The following complex command extracts the value of the <name/> element'
-                               echo 'within <project/> of your Java/Maven project''s "pom.xml" file.'
-                               set -x
-                               NAME=`mvn help:evaluate -Dexpression=project.name | grep "^[^\\[]"`
-                               set +x
-                               echo 'The following complex command behaves similarly to the previous one but'
-                               echo 'extracts the value of the <version/> element within <project/> instead.'
-                               set -x
-                               VERSION=`mvn help:evaluate -Dexpression=project.version | grep "^[^\\[]"`
-                               set +x
-                               echo 'The following command runs and outputs the execution of your Java'
-                               echo 'application (which Jenkins built using Maven) to the Jenkins UI.'
-                               set -x
-                               java -jar target/${NAME}-${VERSION}.jar
-                
-                 '''
-               
+         stage('docker image Build') {
+             
+            steps {
+                 sh'docker build -f Dockerfile -t my-java-app/dp-alpine:${env.BUILD.NUMBER}'
             }
-        }
+         }
     }
 }
