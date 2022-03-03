@@ -41,14 +41,15 @@ pipeline {
         }
 
           stage('docker image build/push') {
-             
-            steps {
-                  when {
+                when {
                     expression {
                          currentBuild.result == null || currentBuild.result == 'SUCCESS' 
               }
         }
-             script{
+             
+            steps {
+            
+               script{
                  
                    docker.withRegistry( 'https://index.docker.io/v1/',  DOCKERHUB_CREDENTIALS ) {
                    def app = docker.build("rzdin/my-java-app:${BUILD_NUMBER}", '.').push()
