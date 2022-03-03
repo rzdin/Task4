@@ -1,4 +1,4 @@
-FROM openjdk:8-jre-alpine3
+FROM openjdk:8-jre-alpine3.9
 
 RUN mkdir /app
 
