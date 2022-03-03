@@ -42,7 +42,7 @@ pipeline {
          stage('docker image Build') {
              
             steps {
-                 sh'docker build -t my-java-app:${BUILD_NUMBER}'
+                 sh'docker build . -t my-java-app:${BUILD_NUMBER}'
             }
          }
     }
