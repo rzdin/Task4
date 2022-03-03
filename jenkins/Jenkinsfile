@@ -10,7 +10,7 @@ pipeline {
         region1 = "us-east-2"                    //artifact upload bucket region 
         aws_credential = "AWSReservedSSO_AdministratorAccess_564bcbbbca5e5655/rzdin@enquizit.com" //aws credentials 
         application_name = "Nodejs" 
-        DOCKERHUB_CREDENTIALS = credentials('rzdin-dockerhub')
+        DOCKERHUB_CREDENTIALS = "rzdin-dockerhub"
         
            
         
