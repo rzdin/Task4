@@ -42,7 +42,7 @@ pipeline {
          stage('docker image Build') {
              
             steps {
-                 sh'docker build -f Dockerfile -t my-java-app/dp-alpine:${env.BUILD_NUMBER}'
+                 sh'docker build -f Dockerfile -t my-java-app/dp-alpine:${BUILD_NUMBER}'
             }
          }
     }
