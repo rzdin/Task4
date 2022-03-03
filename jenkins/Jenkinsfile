@@ -39,21 +39,15 @@ pipeline {
                 }
             }
         }
-         stage('docker image Build') {
+
+          stage('docker image build/push') {
              
             steps {
-                 sh'docker build  -t my-java-app:${BUILD_NUMBER} .'
-            }
-         }
-          stage('docker image push') {
-             
-            steps {
-                 script {
+                 
                     docker.withRegistry( 'https://index.docker.io/v1/',  DOCKERHUB_CREDENTIALS ) {
-                    my-java-app*.push()
-            }
-         }
-    }
- }
-}
+                    def app = docker.build("my-java-app:${BUILD_NUMBER}", '.').push()
+           }
+        }
+     }
+  }
 }
