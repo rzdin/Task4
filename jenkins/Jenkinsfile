@@ -61,7 +61,7 @@ pipeline {
             steps{
                    withAWS(credentials: "${aws_credential}", region: "${region}"){
                      
-                        s3Upload(file:"*.jar", path:"target/", bucket:"${bucket}")
+                        s3Upload(file:"*.jar", path:"./target/*.jar", bucket:"${bucket}")
         }
      }
   }            
