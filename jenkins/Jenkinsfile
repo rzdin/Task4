@@ -60,7 +60,7 @@ pipeline {
            
             steps{
                  sh'''#!/bin/bash
-                    cp ./target/my-app-1.0-${BUILD_NUMBER}-SNAPSHOT.jar ./Task-4-pipline/
+                    cp ./target/my-app-1.0-${BUILD_NUMBER}-SNAPSHOT.jar  Task-4-pipline/
                  '''
                    withAWS(credentials: "${aws_credential}", region: "${region}"){
                      
