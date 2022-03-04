@@ -28,7 +28,7 @@ pipeline {
             }
              post {
                 always {
-                    emailext attachLog: true, body: 'This is an extented email test ', subject: 'This is an extented email test ', to: 'rzdin@enquizit.com'
+                    emailext attachLog: true, body: 'This is an extented email test ', subject: 'This is an extented email test ', to: 'ziauddinrana@hotmail.com'
                 }
             }
         }
