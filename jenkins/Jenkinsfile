@@ -26,6 +26,11 @@ pipeline {
             steps {
                 sh 'mvn -B -DskipTests clean package -D v=${BUILD_NUMBER}'
             }
+             post {
+                always {
+                    emailext attachLog: true, body: 'This is an extented email test ', subject: 'This is an extented email test ', to: 'rzdin@enquizit.com'
+                }
+            }
         }
         stage('Test') {
               
