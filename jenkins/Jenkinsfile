@@ -61,7 +61,7 @@ pipeline {
             steps{
                  sh'''#!/bin/bash
                     cp /target/my-app-1.0-${BUILD_NUMBER}-SNAPSHOT.jar .
-                 ''''
+                 '''
                    withAWS(credentials: "${aws_credential}", region: "${region}"){
                      
                         s3Upload(file:"my-app-1.0-${BUILD_NUMBER}-SNAPSHOT.jar", bucket:"${bucket}")
