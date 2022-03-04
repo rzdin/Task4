@@ -57,5 +57,14 @@ pipeline {
            }
         }
      }
-  }
+         stage('S3 Prod Env'){ //This stage deploy the artifacts from the copy build artifacts stage to se dployement bucket 
+           
+            steps{
+                   withAWS(credentials: "${aws_credential}", region: "${region}"){
+                     
+                       s3Upload(file:"target/*jar", bucket:"${bucket}")
+        }
+     }
+  }            
+}
 }
